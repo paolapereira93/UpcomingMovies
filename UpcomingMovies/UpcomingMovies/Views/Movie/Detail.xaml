@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UpcomingMovies.Views.Movie.Detail">
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <Grid RowSpacing="5" ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="200" Source="{Binding PosterPath}"/>
+                <StackLayout Grid.Column="1" Orientation="Vertical">
+                    <Label Style="{DynamicResource titleMovieStyle}" Text="{Binding Title}"/>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                        <Image Source="calendar.png" HeightRequest="15"/>
+                        <Label Text="{Binding ReleaseDate}" Style="{DynamicResource infoStyle}"/>
+                        <Image Source="stopwatch.png" HeightRequest="15"/>
+                        <Label Text="{Binding RuntimeMin}" Style="{DynamicResource infoStyle}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                        <Image Source="moviefilm.png" HeightRequest="15"/>
+                        <Label Text="{Binding FormatedGenres}" Style="{DynamicResource grayInfoStyle}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Label Text="{Binding Overview}" HorizontalOptions="FillAndExpand" Margin="5, 5, 5, 5"/>
+            <Frame>
+                <WebView  x:Name="webview" HeightRequest="200" Source="{Binding Youtube}" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"/>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

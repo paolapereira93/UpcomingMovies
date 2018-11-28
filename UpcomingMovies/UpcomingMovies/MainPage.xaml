@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UpcomingMovies"
+             x:Class="UpcomingMovies.MainPage"
+             xmlns:Controls="clr-namespace:UpcomingMovies.Component">
+    <NavigationPage.TitleView>
+        <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Fill">
+            <Image Source="popcorn.png" HeightRequest="50"/>
+            <Label  Style="{DynamicResource titleAppStyle}" Text="Upcoming Movies"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout Orientation="Vertical">
+        <SearchBar Placeholder="search.." Text="{Binding Search}" TextChanged="SearchBar_TextChanged"></SearchBar>
+        <Controls:InfiniteScrollListView x:Name="MovieList" IsPullToRefreshEnabled="True" LoadCommand="{Binding LoadCommand}" ItemsSource="{Binding Items}" RowHeight="200" ItemTapped="InfiniteScrollListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" VerticalOptions="FillAndExpand" Source="{Binding PosterPath}"/>
+                            <StackLayout Grid.Column="1" Orientation="Vertical">
+                                <Label Text="{Binding Title}" HorizontalOptions="FillAndExpand"  VerticalOptions="Fill" Style="{DynamicResource titleMovieStyle}"/>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                                    <Image Source="calendar.png" HeightRequest="15"/>
+                                    <Label Text="{Binding ReleaseDate}" Style="{DynamicResource infoStyle}"/>
+                                </StackLayout>
+                                <Label Text="{Binding ShortOverview}" Style="{DynamicResource grayInfoStyle}"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </Controls:InfiniteScrollListView>
+    </StackLayout>
+
+</ContentPage>
