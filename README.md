@@ -8,10 +8,10 @@ Packages used:
 - Microsoft.Net.Http v2.2.29 (Http communication)
 - NewtonsoftJason v12.0.1 (Convert json to Model Objects)
 
-## To build:
+## To build
 
 Visual Studio 2017
 
-## To run on your Android device:
+## To run on your Android device
 
 Download and install the apk (on folder apk)
