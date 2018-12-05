@@ -1,4 +1,4 @@
-# UpcomingMovies v1
+# UpcomingMovies
 
 ## Android App built with Xamarin Forms
 
